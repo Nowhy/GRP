@@ -31,14 +31,26 @@ public class Manage{
 				menu.newGame();
 			}else if(input.equals("Save")){
 				menu.saveBoard();//Haven't Achieved Now!!!
-			}else if(checkInputFormat() && checkSameSide() && checkGuize()){
+			}else if(checkInputFormat() && checkSameSide()){
+				if( checkGuize()){
 				int end =  board[endI][endJ];
 				chessBoard.updateChessBoard(startJ, startI, endJ, endI);
 				menu.commandRecord(input +" " + end);
-			}else{
-				if(!checkGuize()){
-					System.out.println("Please Obey Chess Rule!");
+				if(end == 1){
+					System.out.println("Black win!");
+					menu.newGame();
 				}
+				else if(end == 8){
+					System.out.println("Red win!");
+					menu.newGame();
+				}
+				}
+				else{
+					System.out.println("Please obey the rule");
+					reader.nextLine();
+				}
+			}
+				else{
 				System.out.println("Press enter to continue..........");
 				reader.nextLine();
 			}
@@ -105,10 +117,6 @@ public class Manage{
 	
 	//check whether the format of input is correct
 	public boolean checkInputFormat(){
-		if(input.length() < 6){
-			return false;
-		}
-		else{
 		String[] subString = input.split(" ");
 		
 		//if it is suit for "Move X X to X X"
@@ -137,7 +145,6 @@ public class Manage{
 		}
 		
 		return false;
-		}
 	}
 	
 	
@@ -151,10 +158,6 @@ public class Manage{
 	
 	//check start point and end point are valid
 	private boolean checkSameSide(){
-		if(!checkInputFormat()){
-			return false;
-		}
-		else{
 		step = chessBoard.getStep();
 		boolean b1,b2;
 		board = chessBoard.getChessBoard();
@@ -173,18 +176,13 @@ public class Manage{
 			System.out.println("Please not choose your side chess !");
 		}
 		return (b1 && !b2);
-		}
 	}
 	
 	
 	private boolean checkGuize(){
-		if(checkSameSide()){
-			return false;
-		}
-		else{
 		board = chessBoard.getChessBoard();
 		int start = board[startI][startJ];
-		boolean b1 = false, b2 = false;
+		boolean b1=false, b2 = false;
 		switch(start){
 		   case 1://hongshuai
 			   return !(endI>2||endJ<3||endJ>5) && !(Math.abs(startJ-endJ)+Math.abs(startI-endI)>1);
@@ -340,7 +338,6 @@ public class Manage{
 	    	   break;
 		}
 		return true;
-		}
 	}
 	
 }

@@ -3,8 +3,7 @@ package newChess;
 public class ChessBoard{
 	
 	private int[][] chessBoard = newBoard();
-	private int step = 0;
-	
+	private int step = 0;	
 	
 	//The initialization board
 	public int[][] newBoard(){
@@ -45,6 +44,7 @@ public class ChessBoard{
 	
 	//update the chess board
 	public void updateChessBoard(int startJ, int startI, int endJ, int endI){
+		int end = chessBoard[endI][endJ];
 		chessBoard[endI][endJ] = chessBoard[startI][startJ];
 		chessBoard[startI][startJ] = 0;
 		step++;
