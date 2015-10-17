@@ -320,15 +320,15 @@ public class Manage{
 						}
 					}
 				}
-			   return 	!(startJ!=endJ && startI!=endI) && b1;	   
+			   return 	!(startJ != endJ && startI != endI) && b1;	   
 	       case 5://hongshi
-	    	   return (endI>2||endJ<3||endJ>5) && !(Math.abs(startI-endI) != 1 || Math.abs(endJ-startJ) != 1);
+	    	   return !(endI > 2 || endJ < 3||endJ > 5) && !(Math.abs(startI - endI) != 1 || Math.abs(endJ - startJ) != 1);
 	       case 12://heishi
-	    	   return (endI>7||endJ<3||endJ>5) && !(Math.abs(startI-endI) != 1 || Math.abs(endJ-startJ) != 1);   
+	    	   return !(endI < 7 || endJ < 3 || endJ > 5) && !(Math.abs(startI - endI) != 1 || Math.abs(endJ - startJ) != 1);   
 	       case 6://hongxiang
-	    	   return !(endI>4) && (Math.abs(startI-endI) == 2 || Math.abs(startJ-endJ) == 2) && (board[(startI+endI)/2][(startJ+endJ)/2] == 0);
+	    	   return !(endI > 4) && (Math.abs(startI - endI) == 2 && Math.abs(startJ - endJ) == 2) && (board[(startI + endI)/2][(startJ + endJ)/2] == 0);
 	       case 13://heixiang
-	    	   return !(endI<5) && (Math.abs(startI-endI) == 2 || Math.abs(startJ-endJ) == 2) && (board[(startI+endI)/2][(startJ+endJ)/2] == 0);   
+	    	   return !(endI < 5) && (Math.abs(startI - endI) == 2 && Math.abs(startJ - endJ) == 2) && (board[(startI + endI)/2][(startJ + endJ)/2] == 0);   
 	       case 7://hongbing
 				return !(endI < startI) && !(startI < 5 && startI == endI) && !(endI - startI + Math.abs(endJ - startJ) > 1);
 	       case 14://heizu
